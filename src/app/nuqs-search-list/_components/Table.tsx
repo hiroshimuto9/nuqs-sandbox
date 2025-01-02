@@ -1,5 +1,3 @@
-import { createClient } from "@/lib/supabase/server";
-
 import {
   Table,
   TableBody,
@@ -8,13 +6,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { fetchUsers } from "../actions";
 
 export async function SearchTable({ search }: { search: string }) {
-  const supabase = await createClient();
-  const { data: users, error: usersError } = await supabase
-    .from("User")
-    .select()
-    .ilike("name", `%${search}%`);
+  const { users } = await fetchUsers({ search });
 
   return (
     <>
