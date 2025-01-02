@@ -18,9 +18,6 @@ export async function SearchTable({ search }: { search: string }) {
 
   return (
     <>
-      <div className="bg-blue-300 my-4 p-2 rounded">
-        searchParams : {search}
-      </div>
       <Table>
         <TableHeader>
           <TableRow>

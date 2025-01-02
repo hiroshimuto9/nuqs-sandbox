@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { SearchField } from "./_components/SearchField";
 import { SearchTable } from "./_components/Table";
+import { Condition } from "./_components/Condition";
 
 export default function Page({
   searchParams,
@@ -25,5 +26,10 @@ async function SearchTableWrapper({
   searchParams: Promise<{ [key: string]: string }>;
 }) {
   const search = (await searchParams).search;
-  return <SearchTable search={search} />;
+  return (
+    <>
+      <Condition search={search} />
+      <SearchTable search={search} />
+    </>
+  );
 }
