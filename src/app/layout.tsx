@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "./_components/app-sidebar";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +34,7 @@ export default function RootLayout({
           <AppSidebar />
           <main className="w-full m-4">
             <SidebarTrigger />
-            {children}
+            <NuqsAdapter>{children}</NuqsAdapter>
           </main>
         </SidebarProvider>
       </body>

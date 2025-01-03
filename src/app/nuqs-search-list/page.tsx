@@ -28,8 +28,8 @@ async function SearchTableWrapper({
   const search = (await searchParams).search;
   return (
     <>
-      <Condition search={search} />
-      <SearchTable search={search} />
+      <Condition />
+      <SearchTable />
     </>
   );
 }

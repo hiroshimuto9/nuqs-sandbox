@@ -1,3 +1,4 @@
+"use client";
 import {
   Table,
   TableBody,
@@ -7,9 +8,21 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { fetchUsers } from "../actions";
+import { useQueryState } from "nuqs";
+import { useEffect, useState } from "react";
+import { User } from "@prisma/client";
 
-export async function SearchTable({ search }: { search: string }) {
-  const { users } = await fetchUsers({ search });
+export function SearchTable() {
+  const [search] = useQueryState("search", { defaultValue: "" });
+  const [users, setUsers] = useState<User[]>([]);
+
+  useEffect(() => {
+    fetchUsers({ search }).then(({ users }) => {
+      if (users) {
+        setUsers(users);
+      }
+    });
+  }, [search]);
 
   return (
     <>
