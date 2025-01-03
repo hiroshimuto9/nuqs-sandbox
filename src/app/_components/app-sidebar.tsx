@@ -18,6 +18,11 @@ const items = [
     url: "/nuqs-search-list",
     icon: Home,
   },
+  {
+    title: "Tabs Contents",
+    url: "/nuqs-tabs-contents",
+    icon: Home,
+  },
 ];
 
 export function AppSidebar() {
